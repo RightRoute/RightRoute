@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Plan Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .header-img {
+            width: 100%;
+            height: auto;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="number"], input[type="text"], select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .plan-output {
+            margin-top: 20px;
+        }
+        .checklist {
+            list-style-type: none;
+            padding: 0;
+        }
+        .checklist li {
+            margin: 10px 0;
+        }
+        .career-path {
+            margin-top: 30px;
+            background: #e7f7e7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .career-path h3 {
+            margin-top: 0;
+        }
+        .day-in-life {
+            margin-top: 20px;
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .day-in-life h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>AI Career Plan Generator</h1>
+        <p>Plan your future career, step-by-step. Tailored to your age, ambitions, and location.</p>
+        <img src="https://images.unsplash.com/photo-1562882003-1e53a04c5b56" alt="College Students" class="header-img">
+    </header>
+
+    <!-- Form Section for User Input -->
+    <section id="plannerFormSection">
+        <div class="form-container">
+            <h2>Enter Your Details</h2>
+            <form id="plannerForm">
+                <label for="age">Enter Your Age:</label>
+                <input type="number" id="age" name="age" required><br><br>
+
+                <label for="career">Desired Career:</label>
+                <input type="text" id="career" name="career" required><br><br>
+
+                <label for="state">State You Live In:</label>
+                <select id="state" name="state" required>
+                    <option value="" disabled selected>Select your state</option>
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+                </select><br><br>
+
+                <button type="submit">Generate Plan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section to Display Generated Plan -->
+    <section id="planOutputSection" style="display:none;">
+        <h2>Your Personalized Career Plan</h2>
+        <div id="planOutput" class="plan-output"></div>
+        <div id="careerPathSection" class="career-path" style="display:none;">
+            <h3>AI Career Path Run-Through</h3>
+            <p id="careerPathDescription"></p>
+        </div>
+        <div id="dayInLifeSection" class="day-in-life" style="display:none;">
+            <h3>What a Day in the Life of a <span id="careerName"></span> Looks Like</h3>
+            <p id="dayInLifeDescription"></p>
+        </div>
+        <div id="salarySection" class="salary" style="display:none;">
+            <h3>Estimated Yearly Salary</h3>
+            <p id="salaryOutput"></p>
+        </div>
+        <button id="saveProgressButton">Save Progress</button>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 CareerPlan. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+        document.getElementById('plannerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            
+            // Get user input
+            const age = parseInt(document.getElementById('age').value);
+            const career = document.getElementById('career').value.trim();
+            const state = document.getElementById('state').value.trim();
+
+            if (isNaN(age) || !career || !state) {
+                alert('Please enter a valid age, career, and state!');
+                return;
+            }
+
+            // Generate Career Plan based on age, career, and state
+            let plan = generateCareerPlan(age, career, state);
+
+            // Display the plan
+            const planOutputSection = document.getElementById('planOutputSection');
+            const planOutput = document.getElementById('planOutput');
+            planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
+
+            planOutputSection.style.display = 'block'; // Show the plan section
+
+            // Show Career Path run-through with AI suggestions
+            const careerPathDescription = document.getElementById('careerPathDescription');
+            careerPathDescription.innerText = getAICareerPathDescription(career, age, state);
+            document.getElementById('careerPathSection').style.display = 'block'; // Show the career path
+
+            // Show "Day in the Life" description
+            const dayInLifeDescription = document.getElementById('dayInLifeDescription');
+            dayInLifeDescription.innerText = getDayInLifeDescription(career);
+            document.getElementById('careerName').innerText = career;
+            document.getElementById('dayInLifeSection').style.display = 'block'; // Show the Day in Life section
+
+            // Show salary based on career and state
+            const salary = getSalary(career, state);
+            const salarySection = document.getElementById('salarySection');
+            const salaryOutput = document.getElementById('salaryOutput');
+            salaryOutput.innerText = `Estimated annual salary: $${salary}`;
+            salarySection.style.display = 'block'; // Show
+
