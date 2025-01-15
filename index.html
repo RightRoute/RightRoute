@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Plan Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .header-img {
+            width: 100%;
+            height: auto;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .plan-output {
+            margin-top: 20px;
+        }
+        .checklist {
+            list-style-type: none;
+            padding: 0;
+        }
+        .checklist li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Career Plan Generator</h1>
+        <p>Plan your future career, step-by-step. Tailored to your age and ambitions.</p>
+        <img src="https://images.unsplash.com/photo-1562882003-1e53a04c5b56" alt="College Students" class="header-img">
+    </header>
+
+    <!-- Form Section for User Input -->
+    <section id="plannerFormSection">
+        <div class="form-container">
+            <h2>Enter Your Details</h2>
+            <form id="plannerForm">
+                <label for="age">Enter Your Age:</label>
+                <input type="number" id="age" name="age" required><br><br>
+
+                <label for="career">Desired Career:</label>
+                <input type="text" id="career" name="career" required><br><br>
+
+                <button type="submit">Generate Plan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section to Display Generated Plan -->
+    <section id="planOutputSection" style="display:none;">
+        <h2>Your Personalized Career Plan</h2>
+        <div id="planOutput" class="plan-output"></div>
+        <button id="saveProgressButton">Save Progress</button>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 CareerPlan. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+        document.getElementById('plannerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            
+            alert("Form submitted!"); // Alert to check if form submission triggers
+            
+            // Get user input
+            const age = parseInt(document.getElementById('age').value);
+            const career = document.getElementById('career').value.trim();
+
+            alert("Age: " + age + ", Career: " + career); // Alert to see if values are captured
+
+            if (isNaN(age) || !career) {
+                alert('Please enter a valid age and career!');
+                return;
+            }
+
+            // Generate Career Plan based on age and career
+            let plan = generateCareerPlan(age, career);
+
+            // Display the plan
+            const planOutputSection = document.getElementById('planOutputSection');
+            const planOutput = document.getElementById('planOutput');
+            planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
+
+            planOutputSection.style.display = 'block'; // Show the plan section
+        });
+
+        function generateCareerPlan(age, career) {
+            const plan = [];
+            alert("Generating plan..."); // Check if this function is being triggered
+            
+            // Example of how the plan is generated based on age
+            if (age <= 18) {
+                plan.push(`Step 1: Research different pathways for a career in ${career}.`);
+                plan.push(`Step 2: Start exploring universities or colleges offering ${career} courses.`);
+                plan.push('Step 3: Consider internships or volunteer work to get experience.');
+                plan.push('Step 4: Build a professional network through social media like LinkedIn.');
+            } else if (age <= 25) {
+                plan.push(`Step 1: Apply to universities offering ${career} and major in related courses.`);
+                plan.push(`Step 2: Seek out internships or entry-level jobs related to ${career}.`);
+                plan.push('Step 3: Start building your portfolio (e.g., website, blog, project samples).');
+                plan.push('Step 4: Network with industry professionals and attend job fairs.');
+            } else if (age <= 35) {
+                plan.push(`Step 1: Focus on advancing your career in ${career}.`);
+                plan.push('Step 2: Consider further education (e.g., certifications, workshops) to advance your skills.');
+                plan.push('Step 3: Take leadership roles and develop expertise in your field.');
+                plan.push('Step 4: Start saving for long-term goals like buying a home or starting a family.');
+            } else {
+                plan.push(`Step 1: Strengthen your experience in ${career} and consider mentoring younger professionals.`);
+                plan.push('Step 2: Focus on financial security and long-term goals, like retirement planning.');
+                plan.push('Step 3: Explore opportunities for career transition if desired.');
+                plan.push('Step 4: Share your knowledge by teaching or writing articles in your field.');
+            }
+
+            return plan;
+        }
+    </script>
+
+</body>
+</html>
