@@ -1,0 +1,140 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #4CAF50;
+}
+
+/* Header */
+header {
+    background-image: url('https://source.unsplash.com/1600x900/?college,students,university');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    color: white;
+    text-align: center;
+}
+
+header .header-content {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Add transparency to header */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.header-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Form Section */
+#plannerFormSection {
+    background-color: white;
+    margin: 40px 0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input[type="number"],
+input[type="text"],
+button {
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+input[type="number"], input[type="text"] {
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Plan Section */
+#planOutputSection {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+#planOutput {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#planOutput div {
+    margin-bottom: 15px;
+}
+
+#planOutput input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button#saveProgressButton {
+    background-color: #008CBA;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button#saveProgressButton:hover {
+    background-color: #005f74;
+}
+
+/* Footer Section */
+footer {
+    background-image: url('https://source.unsplash.com/1600x900/?university,study');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+.footer-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
