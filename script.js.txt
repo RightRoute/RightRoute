@@ -1,0 +1,15 @@
+document.getElementById('plannerForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent the form from submitting the normal way
+    
+    const goal = document.getElementById('goal').value;
+    const years = parseInt(document.getElementById('years').value);
+
+    // Creating a plan message
+    let plan = `Your goal: ${goal}. You have ${years} years to achieve it. Here's a basic outline:\n`;
+    for (let i = 1; i <= years; i++) {
+        plan += `- Year ${i}: Start working on ${goal}.\n`;
+    }
+    
+    // Display the plan in the output section
+    document.getElementById('planOutput').textContent = plan;
+});
