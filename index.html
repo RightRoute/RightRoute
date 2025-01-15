@@ -3,39 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Future Planner</title>
-    <link rel="stylesheet" href="css/styles.css"> 
+    <title>Career Plan Generator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>Welcome to the 20-Year Future Planner</h1>
-        <p>Use our AI to plan your goals and track your progress over the next 20 years!</p>
+        <div class="header-content">
+            <h1>Career Plan Generator</h1>
+            <p>Plan your future career, step-by-step. Tailored to your age and ambitions.</p>
+        </div>
     </header>
 
     <section id="plannerFormSection">
-        <h2>Start Planning</h2>
-        <form id="plannerForm">
-            <label for="goal">What is your main goal?</label><br>
-            <input type="text" id="goal" name="goal" required><br><br>
+        <div class="form-container">
+            <h2>Enter Your Details</h2>
+            <form id="plannerForm">
+                <label for="age">Enter Your Age:</label>
+                <input type="number" id="age" name="age" required><br><br>
 
-            <label for="years">How many years would you like to plan for?</label><br>
-            <input type="number" id="years" name="years" min="1" max="20" required><br><br>
+                <label for="career">Desired Career:</label>
+                <input type="text" id="career" name="career" required><br><br>
 
-            <button type="submit">Generate Plan</button>
-        </form>
+                <button type="submit">Generate Plan</button>
+            </form>
+        </div>
     </section>
 
-    <section id="planOutputSection">
-        <h2>Your Personalized Plan:</h2>
+    <section id="planOutputSection" style="display:none;">
+        <h2>Your Personalized Career Plan</h2>
         <div id="planOutput"></div>
+        <button id="saveProgressButton">Save Progress</button>
     </section>
 
     <footer>
-        <p>© 2025 FuturePlanner. All rights reserved.</p>
+        <p>© 2025 CareerPlan. All rights reserved.</p>
     </footer>
 
-    <script src="js/script.js"></script> 
-
+    <script src="js/script.js"></script>
 </body>
 </html>
