@@ -72,11 +72,43 @@
             return futureRent.toFixed(2); // Round to two decimal places
         }
 
+        // Generate Career Plan based on Age, Career, and Location
+        function generateCareerPlan(age, career, state) {
+            let plan = [];
+
+            if (career === 'software engineer') {
+                if (age <= 22) {
+                    plan = [
+                        "Complete a computer science degree or bootcamp.",
+                        "Start building small projects to gain experience.",
+                        "Apply for internships and entry-level developer positions."
+                    ];
+                } else if (age <= 30) {
+                    plan = [
+                        "Get a full-time developer job.",
+                        "Work on building a portfolio with more complex projects.",
+                        "Start learning new technologies and frameworks."
+                    ];
+                } else {
+                    plan = [
+                        "Consider transitioning into a senior or management role.",
+                        "Contribute to open-source projects or mentor junior developers."
+                    ];
+                }
+            } else {
+                plan = [
+                    "Please consult a career advisor for a personalized plan."
+                ];
+            }
+
+            return plan;
+        }
+
         // Handle form submission
         document.getElementById('plannerForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting normally
 
-            // Get user input for career plan
+            // Get user input
             const age = parseInt(document.getElementById('age').value);
             const career = document.getElementById('career').value.trim();
             const state = document.getElementById('state').value.trim();
@@ -91,26 +123,24 @@
                 return;
             }
 
-            // Calculate future rent
+            // Calculate and display future rent
             const futureRent = calculateRentCost(currentRent, yearsAhead);
             const rentCostOutput = document.getElementById('rentCostOutput');
             rentCostOutput.innerHTML = `In ${yearsAhead} years, your estimated rent will be: $${futureRent}`;
-
-            // Show the rent cost section
             document.getElementById('rentCostSection').style.display = 'block';
 
-            // Generate Career Plan (this part should remain as in your existing code)
-            let plan = generateCareerPlan(age, career, state);
+            // Generate and display Career Plan
+            const plan = generateCareerPlan(age, career, state);
             const planOutput = document.getElementById('planOutput');
             planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
-            document.getElementById('planOutputSection').style.display = 'block'; // Show the plan section
+            document.getElementById('planOutputSection').style.display = 'block';
 
-            // Show Salary Section (this should be integrated with your existing code as well)
-            const salary = getSalary(career, state);
+            // Display Salary Estimation (You can add salary data based on career and state here)
+            const salary = 80000; // You can add logic to calculate based on career/state
             const salarySection = document.getElementById('salarySection');
             const salaryOutput = document.getElementById('salaryOutput');
             salaryOutput.innerText = `Estimated annual salary: $${salary}`;
-            salarySection.style.display = 'block'; // Show salary section
+            salarySection.style.display = 'block';
         });
     </script>
 </body>
