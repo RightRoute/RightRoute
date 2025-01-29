@@ -3,156 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Career Plan Generator</title>
-    <style>
-        /* General Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
-        }
-        
-        header {
-            background: linear-gradient(to right, #4CAF50, #2F6A3E);
-            color: white;
-            text-align: center;
-            padding: 60px;
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        header p {
-            font-size: 1.2em;
-        }
-
-        section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        label {
-            font-size: 1.1em;
-            margin: 10px 0 5px;
-        }
-
-        input[type="text"], input[type="number"], select {
-            padding: 12px;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 15px 20px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        /* Plan Output Styling */
-        #planOutputSection {
-            display: none;
-            margin-top: 40px;
-        }
-
-        .plan-output h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #4CAF50;
-        }
-
-        .checklist {
-            list-style-type: none;
-            padding: 0;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-
-        .checklist li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .checklist input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        /* Rent and Salary Output Styling */
-        .output-section {
-            background-color: #e7f7e7;
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 8px;
-        }
-
-        #salarySection, #rentCostSection {
-            display: none;
-            text-align: center;
-        }
-
-        #salaryOutput, #rentCostOutput {
-            font-size: 1.3em;
-            color: #333;
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: #2F6A3E;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-    </style>
+    <title>RightRoute</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Header Section -->
+    <!-- Header Section with Title -->
     <header>
-        <h1>AI Career Plan Generator</h1>
-        <p>Plan your future career, step-by-step. Tailored to your age, ambitions, and location.</p>
+        <div class="header-content">
+            <h1>RightRoute</h1>
+            <p>Your personalized career and success plan, tailored to your ambitions, age, and location.</p>
+            <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" alt="Career path image" class="header-img">
+        </div>
     </header>
 
     <!-- Form Section for User Input -->
@@ -161,24 +22,25 @@
             <h2>Enter Your Details</h2>
             <form id="plannerForm">
                 <label for="age">Enter Your Age:</label>
-                <input type="number" id="age" name="age" required><br>
+                <input type="number" id="age" name="age" required><br><br>
 
                 <label for="career">Desired Career:</label>
-                <input type="text" id="career" name="career" required><br>
+                <input type="text" id="career" name="career" required><br><br>
 
                 <label for="state">State You Live In:</label>
                 <select id="state" name="state" required>
                     <option value="" disabled selected>Select your state</option>
                     <option value="Indiana">Indiana</option>
                     <option value="Pennsylvania">Pennsylvania</option>
-                    <!-- Add other states as needed -->
-                </select><br>
+                    <!-- Add more states if needed -->
+                </select><br><br>
 
+                <!-- New fields for Rent calculation -->
                 <label for="currentRent">Current Rent ($):</label>
-                <input type="number" id="currentRent" name="currentRent" required><br>
+                <input type="number" id="currentRent" name="currentRent" required><br><br>
 
                 <label for="yearsAhead">Years Ahead to Calculate Rent:</label>
-                <input type="number" id="yearsAhead" name="yearsAhead" required><br>
+                <input type="number" id="yearsAhead" name="yearsAhead" required><br><br>
 
                 <button type="submit">Generate Plan</button>
             </form>
@@ -186,57 +48,31 @@
     </section>
 
     <!-- Section to Display Generated Plan -->
-    <section id="planOutputSection">
+    <section id="planOutputSection" style="display:none;">
         <h2>Your Personalized Career Plan</h2>
         <div id="planOutput" class="plan-output"></div>
 
         <!-- Rent cost output section -->
-        <div id="rentCostSection" class="output-section">
+        <div id="rentCostSection" class="rent-cost" style="display:none;">
             <h3>Estimated Rent in Future</h3>
             <p id="rentCostOutput"></p>
         </div>
 
-        <!-- Salary output section -->
-        <div id="salarySection" class="output-section">
+        <!-- Salary Output Section -->
+        <div id="salarySection" class="salary" style="display:none;">
             <h3>Estimated Yearly Salary</h3>
             <p id="salaryOutput"></p>
         </div>
-
         <button id="saveProgressButton">Save Progress</button>
     </section>
 
     <!-- Footer Section -->
     <footer>
-        <p>© 2025 CareerPlan. All rights reserved.</p>
+        <p>© 2025 RightRoute. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript Section -->
     <script>
-        // Salary estimation function based on career and state
-        function getSalary(career, state) {
-            const salaryData = {
-                "software engineer": {
-                    "Indiana": 75000,
-                    "Pennsylvania": 85000
-                },
-                "data scientist": {
-                    "Indiana": 70000,
-                    "Pennsylvania": 90000
-                },
-                "graphic designer": {
-                    "Indiana": 45000,
-                    "Pennsylvania": 52000
-                },
-                // Add more career and state data as needed
-            };
-
-            if (salaryData[career.toLowerCase()] && salaryData[career.toLowerCase()][state]) {
-                return salaryData[career.toLowerCase()][state];
-            } else {
-                return "Salary data not available";
-            }
-        }
-
         // Rent calculation function
         function calculateRentCost(currentRent, years) {
             const annualIncrease = 0.03; // 3% annual increase
@@ -271,22 +107,18 @@
             // Show the rent cost section
             document.getElementById('rentCostSection').style.display = 'block';
 
-            // Calculate and show the salary
-            const salary = getSalary(career, state);
-            const salarySection = document.getElementById('salarySection');
-            const salaryOutput = document.getElementById('salaryOutput');
-            if (salary !== "Salary data not available") {
-                salaryOutput.innerText = `Estimated yearly salary for a ${career} in ${state}: $${salary}`;
-            } else {
-                salaryOutput.innerText = salary; // Show error message if salary data is not available
-            }
-            salarySection.style.display = 'block';
-
             // Generate Career Plan (this part should remain as in your existing code)
             let plan = generateCareerPlan(age, career, state);
             const planOutput = document.getElementById('planOutput');
             planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
             document.getElementById('planOutputSection').style.display = 'block'; // Show the plan section
+
+            // Show Salary Section (this should be integrated with your existing code as well)
+            const salary = getSalary(career, state);
+            const salarySection = document.getElementById('salarySection');
+            const salaryOutput = document.getElementById('salaryOutput');
+            salaryOutput.innerText = `Estimated yearly salary for a ${career} in ${state}: $${salary}`;
+            salarySection.style.display = 'block'; // Show salary section
         });
 
         // Example career plan generation function (you can modify as needed)
@@ -324,6 +156,7 @@
     </script>
 </body>
 </html>
+
 
 
 
