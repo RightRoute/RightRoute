@@ -1,140 +1,141 @@
-/* Global Reset */
-* {
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f7f7f7;
     color: #333;
-    text-align: center;
-    line-height: 1.6;
 }
 
-h1, h2 {
-    color: #4CAF50;
-}
-
-/* Header */
 header {
-    background-image: url('https://source.unsplash.com/1600x900/?college,students,university');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 20px;
+    background: linear-gradient(to right, #4CAF50, #2F6A3E);
     color: white;
     text-align: center;
+    padding: 60px;
+    font-size: 2em;
+    font-weight: bold;
 }
 
-header .header-content {
-    max-width: 700px;
+header h1 {
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+/* Form Styling */
+section {
+    padding: 40px 20px;
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Add transparency to header */
-    padding: 30px;
-    border-radius: 10px;
-}
-
-.header-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-/* Form Section */
-#plannerFormSection {
     background-color: white;
-    margin: 40px 0;
-    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 }
 
 .form-container {
-    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 600px;
     margin: 0 auto;
 }
 
-input[type="number"],
-input[type="text"],
-button {
-    padding: 15px;
-    font-size: 1.1rem;
+label {
+    font-size: 1.1em;
+    margin: 10px 0 5px;
+}
+
+input[type="text"], input[type="number"], select {
+    padding: 12px;
+    font-size: 1.1em;
+    margin-bottom: 15px;
     border-radius: 5px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-input[type="number"], input[type="text"] {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
 }
 
 button {
+    padding: 15px 20px;
     background-color: #4CAF50;
     color: white;
+    font-size: 1.2em;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-/* Plan Section */
+/* Plan Output Styling */
 #planOutputSection {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
     margin-top: 40px;
 }
 
-#planOutput {
-    text-align: left;
-    margin-top: 20px;
+.plan-output h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #4CAF50;
 }
 
-#planOutput div {
-    margin-bottom: 15px;
+.checklist {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1em;
+    line-height: 1.8;
 }
 
-#planOutput input[type="checkbox"] {
+.checklist li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.checklist input[type="checkbox"] {
     margin-right: 10px;
 }
 
-button#saveProgressButton {
-    background-color: #008CBA;
-    border-radius: 5px;
-    padding: 12px;
-    font-size: 1.1rem;
-    color: white;
-    cursor: pointer;
-    border: none;
+/* Rent and Salary Output Styling */
+.output-section {
+    background-color: #e7f7e7;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
 }
 
-button#saveProgressButton:hover {
-    background-color: #005f74;
-}
-
-/* Footer Section */
-footer {
-    background-image: url('https://source.unsplash.com/1600x900/?university,study');
-    background-size: cover;
-    background-position: center;
-    padding: 50px 20px;
-    color: white;
+#salarySection, #rentCostSection {
+    display: none;
     text-align: center;
 }
 
-footer p {
-    font-size: 1rem;
+#salaryOutput, #rentCostOutput {
+    font-size: 1.3em;
+    color: #333;
 }
 
-.footer-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
+/* Footer Styling */
+footer {
+    background-color: #2F6A3E;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
 }
+
+footer p {
+    margin: 0;
+}
+
