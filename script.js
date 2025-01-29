@@ -1,95 +1,54 @@
-document.getElementById('plannerForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the form from submitting the usual way
-
-    const age = parseInt(document.getElementById('age').value);
-    const career = document.getElementById('career').value.trim().toLowerCase();
-
-    // Get the rent-related inputs
-    const currentRent = parseFloat(document.getElementById('currentRent').value);
-    const yearsAhead = parseInt(document.getElementById('yearsAhead').value);
-
-    // Ensure the rent and years fields are valid
-    if (isNaN(currentRent) || isNaN(yearsAhead)) {
-        alert('Please enter valid rent and number of years!');
-        return;
+<script>
+    // Rent calculation function
+    function calculateRentCost(currentRent, years) {
+        const annualIncrease = 0.03; // 3% annual increase
+        const futureRent = currentRent * Math.pow((1 + annualIncrease), years);
+        return futureRent.toFixed(2); // Round to two decimal places
     }
 
-    // Calculate the future rent
-    const futureRent = calculateRentCost(currentRent, yearsAhead);
+    // Handle form submission
+    document.getElementById('plannerForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        
+        console.log("Form submitted");
 
-    // Display the future rent
-    displayFutureRent(futureRent, yearsAhead);
+        // Get user input for career plan
+        const age = parseInt(document.getElementById('age').value);
+        const career = document.getElementById('career').value.trim();
+        const state = document.getElementById('state').value.trim();
 
-    // Generate plan based on age and career
-    const plan = generatePlan(age, career);
+        // Get rent-related inputs
+        const currentRent = parseFloat(document.getElementById('currentRent').value);
+        const yearsAhead = parseInt(document.getElementById('yearsAhead').value);
 
-    // Display the plan
-    displayPlan(plan);
-
-    // Show the plan and rent sections
-    document.getElementById('planOutputSection').style.display = 'block';
-    document.getElementById('rentCostSection').style.display = 'block';
-});
-
-// Rent calculation function
-function calculateRentCost(currentRent, years) {
-    const annualIncrease = 0.03; // 3% annual increase
-    const futureRent = currentRent * Math.pow((1 + annualIncrease), years);
-    return futureRent.toFixed(2); // Round to two decimal places
-}
-
-// Function to display the future rent
-function displayFutureRent(futureRent, yearsAhead) {
-    const rentCostOutput = document.getElementById('rentCostOutput');
-    rentCostOutput.innerHTML = `In ${yearsAhead} years, your estimated rent will be: $${futureRent}`;
-}
-
-// Function to generate the career plan
-function generatePlan(age, career) {
-    let plan = [];
-    
-    // Career: Software Engineer
-    if (career === 'software engineer') {
-        if (age <= 22) {
-            plan = [
-                "Complete a computer science degree or bootcamp.",
-                "Start building small projects to gain experience.",
-                "Apply for internships and entry-level developer positions."
-            ];
-        } else if (age <= 30) {
-            plan = [
-                "Get a full-time developer job.",
-                "Work on building a portfolio with more complex projects.",
-                "Start learning new technologies and frameworks."
-            ];
-        } else {
-            plan = [
-                "Consider transitioning into a senior or management role.",
-                "Contribute to open-source projects or mentor junior developers."
-            ];
+        // Ensure all required fields are filled in
+        if (isNaN(age) || !career || !state || isNaN(currentRent) || isNaN(yearsAhead)) {
+            alert('Please fill in all the fields!');
+            console.log("Invalid input data");
+            return;
         }
-    }
 
-    // Default message for unrecognized careers
-    else {
-        plan = [
-            "Please consult a career advisor for a personalized plan."
-        ];
-    }
+        console.log("All inputs are valid");
 
-    return plan;
-}
+        // Calculate future rent
+        const futureRent = calculateRentCost(currentRent, yearsAhead);
+        const rentCostOutput = document.getElementById('rentCostOutput');
+        rentCostOutput.innerHTML = `In ${yearsAhead} years, your estimated rent will be: $${futureRent}`;
 
-// Function to display the career plan
-function displayPlan(plan) {
-    const planOutput = document.getElementById('planOutput');
-    planOutput.innerHTML = ''; // Clear previous plan
-    plan.forEach((step, index) => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-            <input type="checkbox" id="step${index}">
-            <label for="step${index}">${step}</label>
-        `;
-        planOutput.appendChild(div);
+        // Show the rent cost section
+        document.getElementById('rentCostSection').style.display = 'block';
+
+        // Generate Career Plan (this part should remain as in your existing code)
+        let plan = generateCareerPlan(age, career, state);
+        const planOutput = document.getElementById('planOutput');
+        planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
+        document.getElementById('planOutputSection').style.display = 'block'; // Show the plan section
+
+        // Show Salary Section (this should be integrated with your existing code as well)
+        const salary = getSalary(career, state);
+        const salarySection = document.getElementById('salarySection');
+        const salaryOutput = document.getElementById('salaryOutput');
+        salaryOutput.innerText = `Estimated annual salary: $${salary}`;
+        salarySection.style.display = 'block'; // Show salary section
     });
-}
+</script>
