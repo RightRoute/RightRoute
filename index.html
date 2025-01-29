@@ -4,47 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RightRoute</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Form Section */
+        section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            padding: 14px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .plan-output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-output ul {
+            padding-left: 20px;
+        }
+
+        .plan-output li {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section with Title -->
+    <!-- Header Section -->
     <header>
-        <div class="header-content">
-            <h1>RightRoute</h1>
-            <p>Your personalized career and success plan, tailored to your ambitions, age, and location.</p>
-            <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" alt="Career path image" class="header-img">
-        </div>
+        <h1>RightRoute</h1>
+        <p>Your personalized career and success plan, tailored to your ambitions, age, and location.</p>
     </header>
 
     <!-- Form Section for User Input -->
     <section id="plannerFormSection">
-        <div class="form-container">
-            <h2>Enter Your Details</h2>
-            <form id="plannerForm">
-                <label for="age">Enter Your Age:</label>
-                <input type="number" id="age" name="age" required><br><br>
+        <h2>Enter Your Details</h2>
+        <form id="plannerForm">
+            <label for="age">Enter Your Age:</label>
+            <input type="number" id="age" name="age" required><br><br>
 
-                <label for="career">Desired Career:</label>
-                <input type="text" id="career" name="career" required><br><br>
+            <label for="career">Desired Career:</label>
+            <input type="text" id="career" name="career" required><br><br>
 
-                <label for="state">State You Live In:</label>
-                <select id="state" name="state" required>
-                    <option value="" disabled selected>Select your state</option>
-                    <option value="Indiana">Indiana</option>
-                    <option value="Pennsylvania">Pennsylvania</option>
-                    <!-- Add more states if needed -->
-                </select><br><br>
+            <label for="state">State You Live In:</label>
+            <select id="state" name="state" required>
+                <option value="" disabled selected>Select your state</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <!-- Add other states as needed -->
+            </select><br><br>
 
-                <!-- New fields for Rent calculation -->
-                <label for="currentRent">Current Rent ($):</label>
-                <input type="number" id="currentRent" name="currentRent" required><br><br>
+            <label for="currentRent">Current Rent ($):</label>
+            <input type="number" id="currentRent" name="currentRent" required><br><br>
 
-                <label for="yearsAhead">Years Ahead to Calculate Rent:</label>
-                <input type="number" id="yearsAhead" name="yearsAhead" required><br><br>
+            <label for="yearsAhead">Years Ahead to Calculate Rent:</label>
+            <input type="number" id="yearsAhead" name="yearsAhead" required><br><br>
 
-                <button type="submit">Generate Plan</button>
-            </form>
-        </div>
+            <button type="submit">Generate Plan</button>
+        </form>
     </section>
 
     <!-- Section to Display Generated Plan -->
@@ -52,13 +159,11 @@
         <h2>Your Personalized Career Plan</h2>
         <div id="planOutput" class="plan-output"></div>
 
-        <!-- Rent cost output section -->
         <div id="rentCostSection" class="rent-cost" style="display:none;">
             <h3>Estimated Rent in Future</h3>
             <p id="rentCostOutput"></p>
         </div>
 
-        <!-- Salary Output Section -->
         <div id="salarySection" class="salary" style="display:none;">
             <h3>Estimated Yearly Salary</h3>
             <p id="salaryOutput"></p>
@@ -117,51 +222,9 @@
             const salary = getSalary(career, state);
             const salarySection = document.getElementById('salarySection');
             const salaryOutput = document.getElementById('salaryOutput');
-            salaryOutput.innerText = `Estimated yearly salary for a ${career} in ${state}: $${salary}`;
+            salaryOutput.innerText = `Estimated annual salary: $${salary}`;
             salarySection.style.display = 'block'; // Show salary section
         });
-
-        // Example career plan generation function (you can modify as needed)
-        function generateCareerPlan(age, career, state) {
-            let plan = [];
-            
-            if (career.toLowerCase() === "software engineer") {
-                if (age <= 22) {
-                    plan = [
-                        "Complete a computer science degree or bootcamp.",
-                        "Start building small projects to gain experience.",
-                        "Apply for internships and entry-level developer positions."
-                    ];
-                } else if (age <= 30) {
-                    plan = [
-                        "Get a full-time developer job.",
-                        "Work on building a portfolio with more complex projects.",
-                        "Start learning new technologies and frameworks."
-                    ];
-                } else {
-                    plan = [
-                        "Consider transitioning into a senior or management role.",
-                        "Contribute to open-source projects or mentor junior developers."
-                    ];
-                }
-            }
-            else {
-                plan = [
-                    "Please consult a career advisor for a personalized plan."
-                ];
-            }
-
-            return plan;
-        }
-
-        // Salary fetching function (you can modify this to include actual data or API integration)
-        function getSalary(career, state) {
-            // Here we will simulate salary based on career and state for now
-            if (career.toLowerCase() === "software engineer") {
-                return 90000; // Example salary
-            }
-            return 0;
-        }
     </script>
 </body>
 </html>
