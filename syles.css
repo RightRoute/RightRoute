@@ -149,29 +149,5 @@ footer p {
     font-size: 14px;
 }
 
-/* Add some responsiveness for smaller screens */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 30px;
-    }
-
-    header p {
-        font-size: 16px;
-    }
-
-    section {
-        padding: 20px;
-    }
-
-    button {
-        padding: 12px 18px;
-        font-size: 16px;
-    }
-
-    .plan-output, .rent-cost, .salary {
-        padding: 15px;
-    }
-}
-
 
 
