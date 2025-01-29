@@ -4,16 +4,47 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
     const age = parseInt(document.getElementById('age').value);
     const career = document.getElementById('career').value.trim().toLowerCase();
 
+    // Get the rent-related inputs
+    const currentRent = parseFloat(document.getElementById('currentRent').value);
+    const yearsAhead = parseInt(document.getElementById('yearsAhead').value);
+
+    // Ensure the rent and years fields are valid
+    if (isNaN(currentRent) || isNaN(yearsAhead)) {
+        alert('Please enter valid rent and number of years!');
+        return;
+    }
+
+    // Calculate the future rent
+    const futureRent = calculateRentCost(currentRent, yearsAhead);
+
+    // Display the future rent
+    displayFutureRent(futureRent, yearsAhead);
+
     // Generate plan based on age and career
     const plan = generatePlan(age, career);
 
     // Display the plan
     displayPlan(plan);
 
-    // Show the plan section
+    // Show the plan and rent sections
     document.getElementById('planOutputSection').style.display = 'block';
+    document.getElementById('rentCostSection').style.display = 'block';
 });
 
+// Rent calculation function
+function calculateRentCost(currentRent, years) {
+    const annualIncrease = 0.03; // 3% annual increase
+    const futureRent = currentRent * Math.pow((1 + annualIncrease), years);
+    return futureRent.toFixed(2); // Round to two decimal places
+}
+
+// Function to display the future rent
+function displayFutureRent(futureRent, yearsAhead) {
+    const rentCostOutput = document.getElementById('rentCostOutput');
+    rentCostOutput.innerHTML = `In ${yearsAhead} years, your estimated rent will be: $${futureRent}`;
+}
+
+// Function to generate the career plan
 function generatePlan(age, career) {
     let plan = [];
     
@@ -49,6 +80,7 @@ function generatePlan(age, career) {
     return plan;
 }
 
+// Function to display the career plan
 function displayPlan(plan) {
     const planOutput = document.getElementById('planOutput');
     planOutput.innerHTML = ''; // Clear previous plan
