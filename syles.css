@@ -1,23 +1,29 @@
-/* Base Styles */
-body {
-    font-family: 'Roboto', sans-serif;
+/* General reset */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f7fc;
-    color: #333;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Section */
 header {
-    background-color: #007bff;
+    background-color: #2e3a59;
     color: white;
-    padding: 40px;
+    padding: 60px 20px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 36px;
-    margin: 0;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
 header p {
@@ -31,7 +37,7 @@ section {
     max-width: 800px;
     margin: 40px auto;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -42,26 +48,34 @@ h2 {
     text-align: center;
 }
 
+/* Form fields styling */
 label {
     font-size: 16px;
+    color: #555;
     margin-bottom: 8px;
     display: block;
 }
 
-input, select {
+input[type="number"],
+input[type="text"],
+select {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
     border: 2px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
+    transition: border-color 0.3s ease;
 }
 
-input[type="number"]:focus, select:focus {
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
     border-color: #007bff;
     outline: none;
 }
 
+/* Submit button */
 button {
     padding: 14px 20px;
     background-color: #007bff;
@@ -78,6 +92,7 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Plan output section */
 .plan-output {
     margin-top: 30px;
     padding: 20px;
@@ -88,15 +103,39 @@ button:hover {
 
 .plan-output ul {
     padding-left: 20px;
+    list-style-type: none;
 }
 
 .plan-output li {
     margin: 10px 0;
     font-size: 16px;
+    color: #555;
 }
 
+.plan-output li input {
+    margin-right: 10px;
+}
+
+/* Rent and Salary output */
+.rent-cost,
+.salary {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e1f5fe;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rent-cost p,
+.salary p {
+    font-size: 18px;
+    color: #2e3a59;
+    margin-bottom: 10px;
+}
+
+/* Footer Section */
 footer {
-    background-color: #007bff;
+    background-color: #2e3a59;
     color: white;
     text-align: center;
     padding: 15px;
@@ -109,5 +148,30 @@ footer p {
     margin: 0;
     font-size: 14px;
 }
+
+/* Add some responsiveness for smaller screens */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    button {
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+
+    .plan-output, .rent-cost, .salary {
+        padding: 15px;
+    }
+}
+
 
 
