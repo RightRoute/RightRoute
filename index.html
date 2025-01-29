@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Career Plan Generator</title>
     <style>
-        /* Your existing styles... */
+        /* Your existing styles here... */
     </style>
 </head>
 <body>
@@ -20,7 +20,6 @@
         <div class="form-container">
             <h2>Enter Your Details</h2>
             <form id="plannerForm">
-                <!-- Existing fields -->
                 <label for="age">Enter Your Age:</label>
                 <input type="number" id="age" name="age" required><br><br>
 
@@ -79,9 +78,34 @@
             return futureRent.toFixed(2); // Round to two decimal places
         }
 
+        // Dummy function for career plan generation based on age, career, state
+        function generateCareerPlan(age, career, state) {
+            console.log("Generating Career Plan...");
+            // Simple example for career planning
+            let plan = [
+                `You are ${age} years old and want to be a ${career} in ${state}.`,
+                "Research industry trends in your field.",
+                "Start building your portfolio."
+            ];
+
+            return plan;
+        }
+
+        // Dummy function to simulate salary based on career and state
+        function getSalary(career, state) {
+            console.log("Calculating salary...");
+            // Simplified salary calculation
+            if (career === "software engineer") {
+                return 100000; // example salary for a software engineer
+            }
+            return 50000; // default salary for other careers
+        }
+
         // Handle form submission
         document.getElementById('plannerForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting normally
+
+            console.log("Form submitted");
 
             // Get user input for career plan
             const age = parseInt(document.getElementById('age').value);
@@ -98,6 +122,8 @@
                 return;
             }
 
+            console.log("All inputs are valid");
+
             // Calculate future rent
             const futureRent = calculateRentCost(currentRent, yearsAhead);
             const rentCostOutput = document.getElementById('rentCostOutput');
@@ -106,13 +132,13 @@
             // Show the rent cost section
             document.getElementById('rentCostSection').style.display = 'block';
 
-            // Generate Career Plan (this part should remain as in your existing code)
+            // Generate Career Plan
             let plan = generateCareerPlan(age, career, state);
             const planOutput = document.getElementById('planOutput');
             planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
             document.getElementById('planOutputSection').style.display = 'block'; // Show the plan section
 
-            // Show Salary Section (this should be integrated with your existing code as well)
+            // Show Salary Section
             const salary = getSalary(career, state);
             const salarySection = document.getElementById('salarySection');
             const salaryOutput = document.getElementById('salaryOutput');
@@ -122,3 +148,4 @@
     </script>
 </body>
 </html>
+
