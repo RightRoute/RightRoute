@@ -1,4 +1,4 @@
- // Rent calculation function
+// Rent calculation function
 function calculateRentCost(currentRent, years) {
     const annualIncrease = 0.03; // 3% annual increase
     const futureRent = currentRent * Math.pow((1 + annualIncrease), years);
@@ -44,7 +44,7 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
     // Generate Career Plan
     let plan = generateCareerPlan(age, career, state);
     const planOutput = document.getElementById('planOutput');
-    planOutput.innerHTML = `<ul class="checklist">${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
+    planOutput.innerHTML = `<ul>${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
     document.getElementById('planOutputSection').style.display = 'block'; // Show the plan section
 
     // Show Salary Section
