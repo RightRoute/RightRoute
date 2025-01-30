@@ -1,150 +1,134 @@
-/* General reset */
-* {
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
     color: #333;
-    line-height: 1.6;
 }
 
-/* Header Section */
+/* Header */
 header {
-    background-color: #2e3a59;
+    background-color: #4CAF50;
     color: white;
-    padding: 60px 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    margin: 0;
 }
 
 header p {
-    font-size: 18px;
+    font-size: 1.2rem;
     margin-top: 10px;
 }
 
-/* Form Section */
-section {
-    padding: 40px 20px;
-    max-width: 800px;
+/* Form Container */
+#plannerFormSection {
     margin: 40px auto;
+    width: 80%;
+    max-width: 800px;
     background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Form fields styling */
-label {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-    display: block;
-}
-
-input[type="number"],
-input[type="text"],
-select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 2px solid #ddd;
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
 }
 
-input[type="number"]:focus,
-input[type="text"]:focus,
-select:focus {
-    border-color: #007bff;
-    outline: none;
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Submit button */
+label {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+input[type="number"], input[type="text"], select {
+    padding: 12px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
 button {
-    padding: 14px 20px;
-    background-color: #007bff;
+    padding: 12px 20px;
+    background-color: #4CAF50;
     color: white;
+    font-size: 1.1rem;
     border: none;
     border-radius: 8px;
-    font-size: 18px;
-    width: 100%;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
 
-/* Plan output section */
-.plan-output {
+/* Plan Output Section */
+#planOutputSection {
     margin-top: 30px;
+    background-color: #fff;
     padding: 20px;
-    background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.plan-output ul {
-    padding-left: 20px;
+#planOutputSection h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#planOutput ul {
     list-style-type: none;
+    padding: 0;
 }
 
-.plan-output li {
+#planOutput li {
+    background-color: #f8f8f8;
+    padding: 15px;
     margin: 10px 0;
-    font-size: 16px;
-    color: #555;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.plan-output li input {
+#planOutput li input {
     margin-right: 10px;
 }
 
-/* Rent and Salary output */
-.rent-cost,
-.salary {
-    margin-top: 30px;
+/* Rent Cost and Salary Sections */
+.rent-cost, .salary {
+    margin-top: 20px;
+    background-color: #fff;
     padding: 20px;
-    background-color: #e1f5fe;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.rent-cost p,
-.salary p {
-    font-size: 18px;
-    color: #2e3a59;
-    margin-bottom: 10px;
-}
-
-/* Footer Section */
 footer {
-    background-color: #2e3a59;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 15px;
-    position: fixed;
-    width: 100%;
+    position: relative;
     bottom: 0;
+    width: 100%;
 }
 
-footer p {
-    margin: 0;
-    font-size: 14px;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    #plannerFormSection {
+        width: 90%;
+    }
 }
