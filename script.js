@@ -22,13 +22,14 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
     const age = parseInt(document.getElementById('age').value);
     const career = document.getElementById('career').value.trim().toLowerCase();
     const state = document.getElementById('state').value.trim();
+    const town = document.getElementById('town').value.trim();
 
     // Get rent-related inputs
     const currentRent = parseFloat(document.getElementById('currentRent').value);
     const yearsAhead = parseInt(document.getElementById('yearsAhead').value);
 
     // Ensure all required fields are filled in
-    if (isNaN(age) || !career || !state || isNaN(currentRent) || isNaN(yearsAhead)) {
+    if (isNaN(age) || !career || !state || !town || isNaN(currentRent) || isNaN(yearsAhead)) {
         alert('Please fill in all the fields!');
         return;
     }
@@ -42,7 +43,7 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
     document.getElementById('rentCostSection').style.display = 'block';
 
     // Generate Career Plan
-    let plan = generateCareerPlan(age, career, state);
+    let plan = generateCareerPlan(age, career, state, town);
     const planOutput = document.getElementById('planOutput');
     planOutput.innerHTML = `<ul>${plan.map(step => `<li><input type="checkbox"> ${step}</li>`).join('')}</ul>`;
     document.getElementById('planOutputSection').style.display = 'block'; // Show the plan section
@@ -55,10 +56,10 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
     salarySection.style.display = 'block'; // Show salary section
 });
 
-// Dummy function for generating career plan based on age and career
-function generateCareerPlan(age, career, state) {
+// Dummy function for generating career plan based on age, career, state, and town
+function generateCareerPlan(age, career, state, town) {
     let plan = [];
-    
+
     if (career === 'software engineer') {
         if (age <= 22) {
             plan = [
